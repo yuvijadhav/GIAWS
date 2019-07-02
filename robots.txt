@@ -1,0 +1,11 @@
+User-Agent: *
+
+Sitemap: http://garnerinsights.com/sitemap.xml
+
+Disallow: /login
+Disallow: /privacy-policy
+Disallow: /return-policy
+Disallow: /disclaimer
+Disallow: /terms-and-condition
+Disallow: /faq
+

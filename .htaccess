@@ -1,0 +1,37 @@
+Order Deny,Allow
+
+Deny from 23.229.62.250
+Deny from 36.74.102.133
+Deny from 117.127.0.210
+Deny from 118.70.124.34
+deny from 160.124.155.
+deny from 160.124.148.
+Deny from 61.223.3.250
+Deny from 61.223.15.240
+Deny from 61.224.84.203
+Deny from 114.41.252.165
+deny from 37.115.146.51
+deny from 134.249.215.31
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+    
+    # Handle Authorization Header
+    RewriteCond %{HTTPS:Authorization} .
+    RewriteRule .* - [E=HTTPS_AUTHORIZATION:%{HTTPS:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+
+
+</IfModule>
