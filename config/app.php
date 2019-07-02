@@ -14,7 +14,7 @@ return [
 
     'name' => 'Laravel',
 
-    'baseURL' => 'http://garnerinsights.com',
+    'baseURL' => 'http://ec2-52-54-200-99.compute-1.amazonaws.com',
 
     /*
     |--------------------------------------------------------------------------
