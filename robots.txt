@@ -1,5 +1,4 @@
-User-agent: *
-Disallow: /
+User-Agent: *
 
 Sitemap: http://garnerinsights.com/sitemap.xml
 
