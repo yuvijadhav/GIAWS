@@ -98,13 +98,13 @@ class RndController extends Controller {
     public function insertDataFunction($offset) {
         $end = "";
 //        for ($i = 0; $i < 50; $i++) {
-            $rdata = $this->getlocalData($offset);
-            if ($rdata) {
-                foreach ($rdata as $key => $val) {
-                    $offset = $this->insertdatainreportUrlTable($val);
-                    $end = $offset;
-                }
+        $rdata = $this->getlocalData($offset);
+        if ($rdata) {
+            foreach ($rdata as $key => $val) {
+                $offset = $this->insertdatainreportUrlTable($val);
+                $end = $offset;
             }
+        }
 //        }
         echo $end;
     }
@@ -119,6 +119,34 @@ class RndController extends Controller {
         $reporturl->report_id = $rarray['report_id'];
         $reporturl->url = $rarray['url'];
         $reporturl->save();
+    }
+
+    public function getlivedata($offset, $limit) {
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://garnerinsights.com/api/reportdata/" . $offset . "/" . $limit,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_TIMEOUT => 300000,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                // Set Here Your Requesred Headers
+                'Content-Type: application/json',
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            return json_decode($response);
+//            print_r(json_decode($response));
+        }
     }
 
 }
