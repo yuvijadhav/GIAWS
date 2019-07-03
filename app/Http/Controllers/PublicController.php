@@ -326,10 +326,50 @@ class PublicController extends Controller {
     public function postAddEnquiry(Request $request) {
         $this->validate($request, EnquiryReport::$rules1);
         $post = $request->all();
-        // $ip= $request->getClientIp();
         $ip = \Request::getClientIp(true);
+        $res = file_get_contents('https://www.iplocate.io/api/lookup/' . $ip);
+        $res = json_decode($res);
+        $country = $res->country;
+        $report_id = $post['report_id'];
         $url = $post['url'];
-        $object = array('name' => $post['name'], 'email' => $post['email'], 'mobile' => $post['phone'], 'source' => 'enquiry before buying', 'report' => $post['report_id'], 'ip' => $ip, 'report_url' => $url);
+        $enquiry_report = new EnquiryReport();
+        $enquiry_report->enquiry_name = $post['name'];
+        $enquiry_report->enquiry_email = $post['email'];
+        $enquiry_report->enquiry_phone = $post['phone'];
+        $enquiry_report->enquiry_company = "Enquiry";
+        $enquiry_report->enquiry_title = "Enquiry";
+        $enquiry_report->enquiry_country = $country;
+        $enquiry_source = "Enquiry Before Buying";
+        $enquiry_title = $post['report_id'];
+        $enquiry_description = "";
+        $object = array('name' => $post['name'], 'email' => $post['email'], 'mobile' => $post['phone'], 'designation' => '', 'enquiry_company' => '', 'country' => $country, 'description' => $enquiry_description, 'report_pages' => '', 'report' => $enquiry_title, 'source' => $enquiry_source, 'ip' => $ip, 'report_url' => $url);
+
+        $Array['name'] = $object['name'];
+        $Array['mail'] = $object['email'];
+        $Array['job_title'] = $object['designation'];
+        $Array['company'] = $object['enquiry_company'];
+        $Array['phone'] = $object['mobile'];
+        $Array['country'] = $res->country;
+        $Array['message'] = $object['description'];
+        $Array['report'] = $object['report'];
+        $Array['region'] = $res->continent;
+        $Array['ip'] = $ip;
+        $Array['website'] = "garnerinsights.com";
+        $Array['source'] = $object['source'];
+
+        $postData = $Array;
+
+        $url = "reportsmonitors.com/addLead";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_POST, count($postData));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+
         $this->sendHtmlMail1($object);
         //flash('Enqury sent successfully','success')->important();
         return redirect('thank-you');
