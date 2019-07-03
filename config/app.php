@@ -14,7 +14,7 @@ return [
 
     'name' => 'Laravel',
 
-    'baseURL' => 'http://alltechbeacon.com',
+    'baseURL' => 'http://garnerinsights.com',
 
     /*
     |--------------------------------------------------------------------------
