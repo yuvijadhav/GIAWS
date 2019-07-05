@@ -439,29 +439,29 @@ class PublicController extends Controller {
         $sub_categories = SubCategory::all();
         if ($url != "null") {
 
-//            $reportURLdata = DB::table('reportsurl')->where('url', $url)->first();
-//            if (($reportURLdata) != NULL) {
-//                $report_id = $reportURLdata->report_id;
-//                $report = Report::where('status', 1)->where("report_id", $report_id)->with("publisher")->with("subCategory")->with("region")->first();
-//                $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-//                return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
-//            } else {
-            $report = FrontReport::where('status', 1)->where("url", $url)->with("publisher")->with("subCategory")->with("region")->with("reportdetails")->first();
-            if (($report) != NULL) {
+            $reportURLdata = DB::table('reportsurl')->where('url', '%' . $url . '%')->first();
+            if (($reportURLdata) != NULL) {
+                $report_id = $reportURLdata->report_id;
+                $report = Report::where('status', 1)->where("report_id", $report_id)->with("publisher")->with("subCategory")->with("region")->first();
                 $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-                return view('report.reportDetailsData')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
+                return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
             } else {
-
-                $report = Report::where('status', 1)->where("url", $url)->with("publisher")->with("subCategory")->with("region")->first();
+                $report = FrontReport::where('status', 1)->where("url", '%' . $url . '%')->with("publisher")->with("subCategory")->with("region")->with("reportdetails")->first();
                 if (($report) != NULL) {
                     $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-                    return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
+                    return view('report.reportDetailsData')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
                 } else {
-                    return redirect('reports');
+
+                    $report = Report::where('status', 1)->where("url", '%' . $url . '%')->with("publisher")->with("subCategory")->with("region")->first();
+                    if (($report) != NULL) {
+                        $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
+                        return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
+                    } else {
+                        return redirect('reports');
+                    }
                 }
+                $reportdetails = FrontReportdetail::where('status', 1)->where("url", $report->sub_category_id)->with("publisher")->with("subCategory")->with("region")->first();
             }
-//                $reportdetails = FrontReportdetail::where('status', 1)->where("url", $report->sub_category_id)->with("publisher")->with("subCategory")->with("region")->first();
-//            }
         } else {
             return redirect('reports');
         }
