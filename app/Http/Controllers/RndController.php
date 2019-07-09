@@ -149,4 +149,11 @@ class RndController extends Controller {
         }
     }
 
+    public function disconnectdb() {
+        $queries = DB::connection('mysql');
+//        $cl = DB::disconnect('mysql');
+        dd($queries);
+        dd($cl);
+    }
+
 }

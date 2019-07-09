@@ -448,7 +448,9 @@ class ReportController extends Controller {
     }
 
     public function getThankyou(Request $request) {
-        $report = Report::with('subCategory')->orderBy('created_at', 'desc')->take(10)->get();
+//        $report = Report::with('subCategory')->orderBy('created_at', 'desc')->take(10)->get();
+        $report = FrontReport::where('status', 1)->with("subCategory")->orderBy('created_at', 'desc')->take(10)->get();
+//        dd($report);
         return view('public.thankYou')->with('report', $report);
     }
 

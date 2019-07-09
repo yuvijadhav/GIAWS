@@ -438,13 +438,14 @@ class PublicController extends Controller {
 //        dd($url);
         $sub_categories = SubCategory::all();
         if ($url != "null") {
-
+            DB::disconnect();
             $reportURLdata = DB::table('reportsurl')->where('url', $url)->first();
 //            dd($reportURLdata);
             if (($reportURLdata) != NULL) {
                 $report_id = $reportURLdata->report_id;
                 $report = Report::where('status', 1)->where("report_id", $report_id)->with("publisher")->with("subCategory")->with("region")->first();
-                $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
+//                $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
+                $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
                 return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
             } else {
                 $report = FrontReport::where('status', 1)->where("url", $url)->with("publisher")->with("subCategory")->with("region")->with("reportdetails")->first();
@@ -457,7 +458,8 @@ class PublicController extends Controller {
                 } else {
                     $report = Report::where('status', 1)->where("url", $url)->with("publisher")->with("subCategory")->with("region")->first();
                     if (($report) != NULL) {
-                        $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
+//                        $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
+                        $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
                         return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
                     } else {
                         return redirect('reports');
@@ -593,4 +595,4 @@ class PublicController extends Controller {
         return view('public.siteMapBlog')->with('news', $news)->with('sub_categories', $sub_categories);
     }
 
-}
+    }
