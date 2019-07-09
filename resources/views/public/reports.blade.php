@@ -2,6 +2,10 @@
 
 @section('content')
 
+@section('title',$cat_name)
+@section('meta_desc', $cat_name)
+@section('meta_keywords',$cat_name)
+
 @include('public.top-search')
 
 <div class="product-page-list bg-secondary section-space-bottom page-margin">                

@@ -2,6 +2,9 @@
 
 @section('content')
 @include('public.top-search')
+@section('title','')
+@section('meta_desc', '')
+@section('meta_keywords','')
 <div class="about-page-area bg-secondary section-space-bottom page-margin">
     <div class="container panel" id="increase-margin-bottom">
         <h2 class="title-section" id='head-color'>Return Policy</h2>

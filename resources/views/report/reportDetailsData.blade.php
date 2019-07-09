@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<title>{{$report->reportDetails['meta_title']}} - Garner Insights</title>
-<meta name="description" content="{{$report->reportDetails['meta_description']}} - Garner Insights">
-<meta name="keywords" content="{{$report->reportDetails['meta_keywords']}}, Garner Insights">
-
+@section('title',$report->reportDetails['meta_title'])
+@section('meta_title',$report->reportDetails['meta_title'])
+@section('meta_desc', $report->reportDetails['meta_description'])
+@section('meta_keywords',$report->reportDetails['meta_keywords'])
 <!-- Inner Page Banner Area Start Here -->
 <?php
 $data = $report->reportDetails['long_description'];

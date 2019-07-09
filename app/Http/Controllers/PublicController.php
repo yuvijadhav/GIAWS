@@ -536,13 +536,14 @@ class PublicController extends Controller {
             $sub_categories = SubCategory::all();
             $sub_category_id = $category->sub_category_id;
             $search = "";
+            $cat_name =$category->sub_category_name;
             $reports = FrontReport::where('status', 1)->with('subCategory')->with('region')->take(10)->orderBy('report_id', 'desc');
             $reports = $reports->where('sub_category_id', $sub_category_id);
             $total_count = $reports->count();
             $reports = $reports->take(10)->get();
             $categories = SubCategory::all();
             $regions = Region::all();
-            return view('public.reports')->with('sub_category_id', $sub_category_id)->with('data', $reports)->with('categories', $categories)->with('regions', $regions)->with('total_count', $total_count)->with('search', $search)->with('sub_categories', $sub_categories);
+            return view('public.reports')->with('sub_category_id', $sub_category_id)->with('data', $reports)->with('categories', $categories)->with('regions', $regions)->with('total_count', $total_count)->with('search', $search)->with('sub_categories', $sub_categories)->with('cat_name',$cat_name);
         } else {
             return redirect('reports');
         }

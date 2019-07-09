@@ -1,15 +1,20 @@
+<script type="text/javascript">
+    var article =<?php echo json_encode($article); ?>;
+</script>
 @extends('layouts.app')
 
 @section('content')
+@section('title',$article->article_title)
+@section('meta_desc', $article->article_title)
+@section('meta_keywords',$article->article_title)
+
+
 <style type="text/css">
     .single-banner img{
         width: 150px;
     }
 </style>
-<script type="text/javascript">
-    var article=<?php echo json_encode($article);?>;
-</script>
-<title>{{$article->article_title}} - Garner Insights</title>
+
 <style type="text/css">
     #description p{
         padding-left:10px;
@@ -55,7 +60,7 @@
                 </div>                                                        
             </div>
         </div>
-        
+
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             @include ('layouts.public-left')
         </div>
@@ -63,8 +68,8 @@
 </div>
 
 <script type="text/javascript">
-    var relatedArticle=<?php echo json_encode($relatedArticle);?>;
-    var parent="#related-article-list";
-    showPaginationData(relatedArticle,parent,articles_public);
+    var relatedArticle =<?php echo json_encode($relatedArticle); ?>;
+    var parent = "#related-article-list";
+    showPaginationData(relatedArticle, parent, articles_public);
 </script>
 @endsection

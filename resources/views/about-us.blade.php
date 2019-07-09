@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-<title>Market Intelligence and Business Consulting Firm</title>
-<meta name="description" content="Garner Insights is a Market Intelligence and Business Consulting firm led by professionals with a vast experience and knowledge of the market research industry.">
-<meta name="keywords" content="market intelligence, business consultant">
+@section('title','Market Intelligence and Business Consulting Firm')
+@section('meta_desc', 'Garner Insights is a Market Intelligence and Business Consulting firm led by professionals with a vast experience and knowledge of the market research industry.')
+@section('meta_keywords','market intelligence, business consultant')
 
 <!-- About Page Start Here -->
 @include('public.top-search')

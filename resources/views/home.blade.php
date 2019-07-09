@@ -181,102 +181,102 @@
                             <br>
                             <br>
                             <p><b><a style="font-size:30" href="#">855-918-5551</b></a>     (US - Canada Toll Free)
-                                <p><a href="#"><span><i class="fa fa-phone" aria-hidden="true"></i></span>Phone: +17739042683</a>
-                                    <p><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>sales@marketreports.biz</a></p>
-                                </ul>
+                            <p><a href="#"><span><i class="fa fa-phone" aria-hidden="true"></i></span>Phone: +17739042683</a>
+                            <p><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>sales@marketreports.biz</a></p>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-item">
+                    <div class="sidebar-item-inner">
+                        <h3 class="sidebar-item-title">LATEST NEWS</h3>
+                        <div class="sidebar-single-item-grid">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <div class="item-title">
+                                        <h3><a href="#">Maruti Suzuki is ready to launch </a></h3>
+                                        <p>Maruti Suzuki is ready to launch Vitara Brezza! Maruti Suzuki's upgraded version of Grand Vitara called compact SUV Brezza..</p>
+                                    </div>
+                                    <div class="item-profile">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="sidebar-item">
-                            <div class="sidebar-item-inner">
-                                <h3 class="sidebar-item-title">LATEST NEWS</h3>
-                                <div class="sidebar-single-item-grid">
-                                    <div class="item-content">
-                                        <div class="item-info">
-                                            <div class="item-title">
-                                                <h3><a href="#">Maruti Suzuki is ready to launch </a></h3>
-                                                <p>Maruti Suzuki is ready to launch Vitara Brezza! Maruti Suzuki's upgraded version of Grand Vitara called compact SUV Brezza..</p>
-                                            </div>
-                                            <div class="item-profile">
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="sidebar-single-item-grid">
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3><a href="#">Maruti Suzuki is ready to launch </a></h3>
+                                    <p>Maruti Suzuki is ready to launch Vitara Brezza! Maruti Suzuki's upgraded version of Grand Vitara called compact SUV Brezza..</p>
                                 </div>
-                                <div class="sidebar-single-item-grid">
-                                    <div class="item-content">
-                                        <div class="item-info">
-                                            <h3><a href="#">Maruti Suzuki is ready to launch </a></h3>
-                                            <p>Maruti Suzuki is ready to launch Vitara Brezza! Maruti Suzuki's upgraded version of Grand Vitara called compact SUV Brezza..</p>
-                                        </div>
-                                        <div class="item-profile">
-                                        </div>
-                                    </div>
+                                <div class="item-profile">
                                 </div>
-                                <div class="sidebar-single-item-grid">
-
-                                    <div class="item-content">
-                                        <div class="item-info">
-                                            <h3><a href="#">Maruti Suzuki is ready to launch </a></h3>
-                                            <p>Maruti Suzuki is ready to launch Vitara Brezza! Maruti Suzuki's upgraded version of Grand Vitara called compact SUV Brezza..</p>
-                                        </div>
-                                        <div class="item-profile">
-                                        </div>
-                                    </div>
-                                </div>
-                                <center><button type="button" class="btn btn-primary">View More</button></center>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Why Choose Area Start Here -->
-        <div class="why-choose-area bg-primaryText section-space-default">                
-            <div class="container">
-                <h2 class="title-textPrimary">Why You Choose Apex Markets Research?</h2>  
-            </div>
-            <div class="container">
-                <div class="row">
-                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="why-choose-box">
-                        <a href="#"><i class="fa fa-gift" aria-hidden="true"></i></a>
-                        <h3><a href="#">Easily Buy & Sell </a></h3>
-                        <p>Dorem Ipsum is simply dummy text of the pring and typesetting industry. Lorem Ipsum has been the industry's standaum.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="why-choose-box">
-                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
-                        <h3><a href="#">Quality Products</a></h3>
-                        <p>Dorem Ipsum is simply dummy text of the pring and typesetting industry. Lorem Ipsum has been the industry's standaum.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="why-choose-box">
-                        <a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a>
-                        <h3><a href="#">100% Secure Payment</a></h3>
-                        <p>Dorem Ipsum is simply dummy text of the pring and typesetting industry. Lorem Ipsum has been the industry's standaum.</p>
+                        <div class="sidebar-single-item-grid">
+
+                            <div class="item-content">
+                                <div class="item-info">
+                                    <h3><a href="#">Maruti Suzuki is ready to launch </a></h3>
+                                    <p>Maruti Suzuki is ready to launch Vitara Brezza! Maruti Suzuki's upgraded version of Grand Vitara called compact SUV Brezza..</p>
+                                </div>
+                                <div class="item-profile">
+                                </div>
+                            </div>
+                        </div>
+                        <center><button type="button" class="btn btn-primary">View More</button></center>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Why Choose Area End Here -->
+</div>
 
-    <div class="trending-products-area section-space-default">                
-        <div class="container">
-            <h2 class="title-default">Popular Categories</h2>  
+<!-- Why Choose Area Start Here -->
+<div class="why-choose-area bg-primaryText section-space-default">                
+    <div class="container">
+        <h2 class="title-textPrimary">Why You Choose Apex Markets Research?</h2>  
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="why-choose-box">
+                    <a href="#"><i class="fa fa-gift" aria-hidden="true"></i></a>
+                    <h3><a href="#">Easily Buy & Sell </a></h3>
+                    <p>Dorem Ipsum is simply dummy text of the pring and typesetting industry. Lorem Ipsum has been the industry's standaum.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="why-choose-box">
+                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+                    <h3><a href="#">Quality Products</a></h3>
+                    <p>Dorem Ipsum is simply dummy text of the pring and typesetting industry. Lorem Ipsum has been the industry's standaum.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="why-choose-box">
+                    <a href="#"><i class="fa fa-lock" aria-hidden="true"></i></a>
+                    <h3><a href="#">100% Secure Payment</a></h3>
+                    <p>Dorem Ipsum is simply dummy text of the pring and typesetting industry. Lorem Ipsum has been the industry's standaum.</p>
+                </div>
+            </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="pricing-plan-wrapper fox-carousel nav-control-middle margin-left-right" data-loop="true" data-items="3" data-margin="0" data-autoplay="true" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="3" data-r-large-nav="true" data-r-large-dots="false">
+    </div>
+</div>
+<!-- Why Choose Area End Here -->
 
-                   <div class="pricing-plan-box">
+<div class="trending-products-area section-space-default">                
+    <div class="container">
+        <h2 class="title-default">Popular Categories</h2>  
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="pricing-plan-wrapper fox-carousel nav-control-middle margin-left-right" data-loop="true" data-items="3" data-margin="0" data-autoplay="true" data-autoplay-timeout="10000" data-smart-speed="2000" data-dots="false" data-nav="true" data-nav-speed="false" data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="2" data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="2" data-r-small-nav="true" data-r-small-dots="false" data-r-medium="3" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="3" data-r-large-nav="true" data-r-large-dots="false">
+
+                <div class="pricing-plan-box">
                     <div class="pricing">
                         <p>
-                        Chemical and Material
-                    </p>
+                            Chemical and Material
+                        </p>
                     </div>
                     <div class="item-img">
                         <img src="img\product\1.jpg" alt="product" class="img-responsive">
@@ -293,8 +293,8 @@
                 <div class="pricing-plan-box">
                     <div class="pricing">
                         <p>
-                        Chemical and Material
-                    </p>
+                            Chemical and Material
+                        </p>
                     </div>
                     <div class="item-img">
                         <img src="img\product\1.jpg" alt="product" class="img-responsive">
@@ -311,8 +311,8 @@
                 <div class="pricing-plan-box">
                     <div class="pricing">
                         <p>
-                        Chemical and Material
-                    </p>
+                            Chemical and Material
+                        </p>
                     </div>
                     <div class="item-img">
                         <img src="img\product\1.jpg" alt="product" class="img-responsive">

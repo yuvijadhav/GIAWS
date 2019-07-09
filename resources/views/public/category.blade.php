@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<title>Secondary Market Research and Industry Analysis Reports</title>
-<meta name="description" content="Choose from a collection of best Secondary Market Research and Industry Analysis Reports across all industries worldwide. Get reports of your target market now.">
-<meta name="keywords" content="secondary market research, industry analysis">
-
+@section('title','Secondary Market Research and Industry Analysis Reports')
+@section('meta_desc', 'Choose from a collection of best Secondary Market Research and Industry Analysis Reports across all industries worldwide. Get reports of your target market now.')
+@section('meta_keywords','secondary market research, industry analysis')
 
 @include('public.top-search')
  

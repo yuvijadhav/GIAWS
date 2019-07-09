@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-<title>Market Research Press Releases and Industry News</title>
-<meta name="description" content="Stay updated with market research press releases and latest industry news on Garner Insights.">
-<meta name="keywords" content="market research press releases, industry news">
+@section('title','Market Research Press Releases and Industry News')
+@section('meta_desc', 'Stay updated with market research press releases and latest industry news on Garner Insights.')
+@section('meta_keywords','market research press releases, industry news')
 
 @include('public.top-search')
 <div class="product-page-list bg-secondary section-space-bottom page-margin">                

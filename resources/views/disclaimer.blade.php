@@ -2,6 +2,9 @@
 
 @section('content')
 @include('public.top-search')
+@section('title','Disclaimer')
+@section('meta_desc', 'Disclaimer')
+@section('meta_keywords','Disclaimer')
 <div class="about-page-area bg-secondary section-space-bottom page-margin">
     <div class="container panel" id="increase-margin-bottom">
         <h2 class="title-section" id='head-color'>Disclaimer</h2>

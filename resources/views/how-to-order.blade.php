@@ -1,11 +1,9 @@
 @extends('layouts.app')
-<head>
-    <style type="text/css">
-
-    </style>
-</head>
 @section('content')
 @include('public.top-search')
+@section('title','How to Order')
+@section('meta_desc', 'How to Order')
+@section('meta_keywords','How to Order')
 <div class="about-page-area bg-secondary section-space-bottom page-margin">
     <div class="container panel" id="increase-margin-bottom">
         <h2 class="title-section" id='head-color'>How to Order</h2>
@@ -39,14 +37,14 @@
                         Reports Monitor is committed to making a secure, safe environment for all of your online transactions. Therefore sometimes it will be necessary for Reports Monitor to request certain information from you on receiving an order. This information is requested so that we can confirm the cardholder authenticity. We use the information to verify that the cardholder is the person who is ordering the product. We would ask you to enter your business/professional email when placing your order, as well as full invoice details, to ensure that we can process your order as quickly and efficiently as possible.<br>
 
                         Reports Monitor takes special steps to protect you and your credit card. When you place an order on our site all of the information which you provide is encrypted using SSL 128 Bit Encryption. This technology safeguards your personal information and guarantees privacy. As an additional security our online payment transactions use the CVV number (the last three digits on the signature strip of your credit or debit card) to guard against card fraud. We may, on occasion, phone or email the cardholder to confirm the transaction prior to dispatch. We also request that if possible a company email address is provided.<br>
-                        
+
                     </div>
                 </div>
-                </div>
             </div>
-        </div>  
+        </div>
     </div>  
- 
+</div>  
+
 </body>
 </html>
 @endsection

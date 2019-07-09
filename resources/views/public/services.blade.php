@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<title>Syndicated & Customized Research Reports| Consulting Services</title>
-<meta name="description" content="Get Syndicated & Customized Research Reports. Leverage our Consulting Services to cater your needs pertaining to market entry, R&D or customer need analysis.">
-<meta name="keywords" content="syndicated research, consulting services">
- 
+@section('title','Syndicated & Customized Research Reports,Consulting Services')
+@section('meta_desc', 'Get Syndicated & Customized Research Reports. Leverage our Consulting Services to cater your needs pertaining to market entry, R&D or customer need analysis.')
+@section('meta_keywords','syndicated research, consulting services')
 <!-- About Page Start Here -->
 @include('public.top-search')
 <div class="product-page-list bg-secondary section-space-bottom page-margin">                
@@ -39,7 +38,7 @@
                 <div>
                     <h2 class="text-gray">Consulting</h2>
                     <div>
-                       We offer our premium consulting services to cater your needs pertaining to market entry, R&D or customer need analysis. Our experts will guide you through the various changes in the market landscape and empower you with the right knowledge which would enable you to move ahead in the right direction.
+                        We offer our premium consulting services to cater your needs pertaining to market entry, R&D or customer need analysis. Our experts will guide you through the various changes in the market landscape and empower you with the right knowledge which would enable you to move ahead in the right direction.
                     </div>
                 </div>
                 <div>

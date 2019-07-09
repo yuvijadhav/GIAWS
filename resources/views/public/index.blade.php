@@ -1,54 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<title>Garner Insights | Global Competitor Analysis and Market Research Reports</title>
-<meta name="description" content="Garner Insights is one of the leading market research & analysis organization across the globe offering highly profitable and success-driven market research solutions to the businesses.">
-<meta name="keywords" content="Garner Insights,Garnerinsights,Global Market Research Reports, industry analysis reports, consulting services, syndicated research reports, Business Research, Market Size and Forecasts">
-<meta name="yandex-verification" content="440f88aaeb429ef6" />
-<meta name="msvalidate.01" content="98B96592A1CF68A7E56E00D608691902" />
-
-<!-- Trending Products Area Start Here -->
-<head>
-    <script type="text/javascript">
-
-        function chooseCategory(data){
-            var id=data;
-            console.log(data);
-            var x=document.getElementById("id1").submit();
-        }
-
-    </script>
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5186043.js"></script>
-    <!-- Yandex.Metrika counter --> 
-    <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter50853775 = new Ya.Metrika2({ id:50853775, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks2"); </script> <!-- /Yandex.Metrika counter -->
-    <meta name ="Naver-Site-Verification" Content = "987e76b56400f980fb0fea53b007586bc8890b8e" />
-    <style type="text/css">
-        .calibri{
-            font-family:"calibri";
-        }
-        #cursor{
-            cursor: pointer;
-        }
-        @media only screen and (max-width: 500px) {
-            #index-padding1{
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-top: 20px;
-            }
-        }
-        a div span{
-            color:#000;
-        }
-        a .latest-home-report{
-            border: none;
-        }
-        .single-item-grid .item-img img{
-            height: 50px;
-        }
-        .product-page-list .container a{
-            cursor: pointer;
-        }
-    </style>
-</head>
+@section('title', 'Global Competitor Analysis and Market Research Reports')
+@section('meta_desc', 'Garner Insights is one of the leading market research & analysis organization across the globe offering highly profitable and success-driven market research solutions to the businesses.')
+@section('meta_keywords', 'Garner Insights,Garnerinsights,Global Market Research Reports, industry analysis reports, consulting services, syndicated research reports, Business Research, Market Size and Forecasts')
 <div class="container-fluid" align="left" style="text-align: left;background: url(images/bg5.jpg); background-size: cover;">
     <div class="main-banner2-wrapper" align="left">                       
         <h1 class="welcome" id="search-font1" style="font-family:'Arial Narrow;' text-align:left;word-spacing: 0px; letter-spacing: 0px;">A platform of extensive market reports to cater your specific needs.</h1>
@@ -182,21 +136,21 @@
     <div class="container ">
         <div class="row col-md-12" align="center" style="margin-top:30px; font-family:'arial';">
 
-           <h2> <strong id="new-index-title " class="content-title">Latest Reports</strong><br></h2>
+            <h2> <strong id="new-index-title " class="content-title">Latest Reports</strong><br></h2>
             <?php $reports = json_decode($report, true); ?>
-                <?php foreach ($reports as $latest): ?>
-                    <div class="col-sm-2" id="latest-report-content">
-                        <a href="{{config('app.baseURL')}}/{{$latest['url']}}">
-                            <div class="latest-home-report col-sm-12" >
-                                <input type="hidden" value="7" name="id">
-                                <img src="{{config('app.baseURL')}}/storage/app/{{$latest['sub_category']['sub_category_image']}}" alt="{{$latest['sub_category']['sub_category_name']}}">
-                               <center> 
-                                    <span class="calibri">{{$latest['report_title']}}</span>
-                                </center>
-                            </div>
-                        </a>
-                    </div> 
-                <?php endforeach ?>
+            <?php foreach ($reports as $latest): ?>
+                <div class="col-sm-2" id="latest-report-content">
+                    <a href="{{config('app.baseURL')}}/{{$latest['url']}}">
+                        <div class="latest-home-report col-sm-12" >
+                            <input type="hidden" value="7" name="id">
+                            <img src="{{config('app.baseURL')}}/storage/app/{{$latest['sub_category']['sub_category_image']}}" alt="{{$latest['sub_category']['sub_category_name']}}">
+                            <center> 
+                                <span class="calibri">{{$latest['report_title']}}</span>
+                            </center>
+                        </div>
+                    </a>
+                </div> 
+            <?php endforeach ?>
         </div>
     </div>
 </div>

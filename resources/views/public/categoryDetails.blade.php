@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title','')
+@section('meta_desc', '')
+@section('meta_keywords','')
 <!-- Inner Page Banner Area Start Here -->
 <div class="pagination-area bg-secondary">
     <div class="container">

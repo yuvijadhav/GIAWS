@@ -1,12 +1,12 @@
 <?php
-$result="";
-if(isset($search)){
-    $result=$search;
+$result = "";
+if (isset($search)) {
+    $result = $search;
 }
 ?>
 <div class="container-fluid" align="left"  style="padding-bottom:0px;text-align: left;background: url('{{config('app.baseURL')}}/images/bg5.jpg');">
     <div class="main-banner2-wrapper" align="left">                       
-        
+
         <div class="col-md-12 search-box" style="margin-bottom:10px;">
             <form class="form-inline" id="search-form" method="post" action="{{config('app.baseURL')}}/reports">
                 <center>

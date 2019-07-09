@@ -1,24 +1,4 @@
-<style type="text/css">
-    #padding-none{
-        padding-bottom: 5px;
-    }
-    .inner-block{
-        background-color: #fff;
-        margin: 10px;
-        min-height: 254px;
-        text-align: center;
-        padding: 30px 10px 10px 10px;
-    }
-    .inner-block h3{
-        color: #000;
-        margin-bottom: 10px;
-    }
-    .inner-block p{
-        color: #000;
-    }
-</style>
 <footer>
-
     <div class="col-md-12 footer-top">
         <div class="container">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 padding-zero">
@@ -58,15 +38,14 @@
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="footer-box margin-top">
                             <h3 class="title-bar-left title-bar-footer">QUICK LINKS</h3>
-                            <ul class="col-sm-6" class="text-black" style="font-size:12px">
-
+                            <ul class="col-sm-6 text-black" style="font-size:12px">
                                 <li><a href="{{config('app.baseURL')}}/privacy-policy">PRIVACY POLICY</a></li><hr class="footer-hr">
                                 <li><a href="{{config('app.baseURL')}}/return-policy">RETURN POLICY</a></li><hr class="footer-hr">
                                 <li><a href="{{config('app.baseURL')}}/disclaimer">DISCLAIMER</a></li><hr class="footer-hr">
                                 <li><a href="{{config('app.baseURL')}}/services">SERVICES</a></li><hr class="footer-hr">
                                 <li><a href="{{config('app.baseURL')}}/sitemap">SITE MAP</a></li>
                             </ul>
-                            <ul class="col-sm-6" class="text-black" style="font-size:12px">
+                            <ul class="col-sm-6 text-black" style="font-size:12px">
                                 <li><a href="{{config('app.baseURL')}}/terms-and-condition">TERMS AND CONDITIONS</a></li><hr class="footer-hr">
                                 <!-- <li><a href="formats-and-delivery">FORMATS AND DELIVERY</a></li><hr class="footer-hr"> -->
                                 <li><a href="{{config('app.baseURL')}}/faq">FAQ</a></li><hr class="footer-hr">
@@ -81,7 +60,6 @@
                             <p class="title-bar-left" id="text-white">Garner Insights</p>
                             <!--<p class="text-black">Office C & D - 4th Floor, Siddhi Towers, Above Rupee Bank, Kondhwa Road, Pune 411048, Maharashtra, India.</p>-->
                             <p id="text-white">Phone :<span class="text-black"> +1 513 549 5911 (U.S.)</span> <br></p>		
-
                             <p id="text-white"> <span class="text-black" style="margin-left: 49px;"> +44 203 318 2846 (U.K.)</span></p>            
                             <!--<p id="text-white">E-mail :<a href="mailto:info@garnerinsights.com" class="text-black"> info@garnerinsights.com</a></p>-->
                         </div>
@@ -113,7 +91,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-lg-12 co-md-12" align="center" id="footer" style="box-shadow: 0px 0px 5px #999;">
-            <p class="text-black" class="text-black">Copyright <script>document.write(new Date().getFullYear())</script> . All Rights Reserved by<b class="text-theme"> Garner Insights</b></p>
+            <p class="text-black">Copyright <script>document.write(new Date().getFullYear())</script> . All Rights Reserved by<b class="text-theme"> Garner Insights</b></p>
         </div>
     </div>
     <!-- Plugins js -->
@@ -150,22 +128,45 @@
     <script src="{{ asset('js/jquery.gridrotator.js')}}" type="text/javascript"></script>
     <!-- Custom Js -->
     <script src="{{ asset('js/main.js')}}" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.min.js"></script></head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.min.js"></script>
 
-<script type="text/javascript">
-$(function () {
-var options = $.extend(true, {lang: '', codemirror: {theme: 'monokai', mode: 'text/html', htmlMode: true, lineWrapping: true}}, {
-"toolbar": [
-    ["style", ["style"]],
-    ["font", ["bold", "underline", "italic", "clear"]],
-    ["color", ["color"]],
-    ["para", ["ul", "ol", "paragraph"]],
-    ["table", ["table"]],
-    ["insert", ["link", "picture", "video"]],
-    ["view", ["fullscreen", "codeview", "help"]]
-]
-});
-$("textarea.summernote-editor").summernote(options);
-});
-</script>
+    <script type="text/javascript">
+                $(function () {
+                    var options = $.extend(true, {lang: '', codemirror: {theme: 'monokai', mode: 'text/html', htmlMode: true, lineWrapping: true}}, {
+                        "toolbar": [
+                            ["style", ["style"]],
+                            ["font", ["bold", "underline", "italic", "clear"]],
+                            ["color", ["color"]],
+                            ["para", ["ul", "ol", "paragraph"]],
+                            ["table", ["table"]],
+                            ["insert", ["link", "picture", "video"]],
+                            ["view", ["fullscreen", "codeview", "help"]]
+                        ]
+                    });
+                    $("textarea.summernote-editor").summernote(options);
+                });
+    </script>
+    <script type="text/javascript">
+        @if (isset($sub_categories))
+        var result =<?php echo json_encode($sub_categories); ?>;
+
+        showMenu(result, "category-menu");
+
+        function showMenu(data, parent) {
+            $.each(data, function (i, item) {
+                $("#" + parent).append("<li><a href='" + baseURL + "/categories/" + item.sub_category_description + "'><img src='{{Config('app.baseURL')}}/storage/app/" + item.sub_category_icon + "' style='height:30px; width=30px;margin-right:5px;'>" + item.sub_category_name + "</a></li>");
+            });
+        }
+        @endif
+
+                $(document).ready(function () {
+        $(document).ajaxStart(function () {
+        $(".se-pre-con").fadeIn("slow"); ;
+        }).ajaxStop(function () {
+        $(".se-pre-con").fadeOut("slow"); ;
+        });
+        }
+        );
+
+    </script>
 </footer>

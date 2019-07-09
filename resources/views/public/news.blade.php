@@ -54,26 +54,26 @@
 
 <script type="text/javascript">
 
-var limit=9;
-var activePage=1;
-var parent="#news-list";
-var pagination="#pagination";
-var serviceUrl="newsData";
+    var limit = 9;
+    var activePage = 1;
+    var parent = "#news-list";
+    var pagination = "#pagination";
+    var serviceUrl = "newsData";
 
-var data=<?php echo json_encode($data);?>;
-var total_count=<?php echo json_encode($total_count);?>;
-showPagination(total_count,limit,activePage,pagination);
-showPaginationData(data,parent,news_public);
+    var data =<?php echo json_encode($data); ?>;
+    var total_count =<?php echo json_encode($total_count); ?>;
+    showPagination(total_count, limit, activePage, pagination);
+    showPaginationData(data, parent, news_public);
 
-$(pagination).on('click', 'li a.page', function() {
-    activePage=parseInt($(this).text());
-    getData(serviceUrl,activePage,limit,parent,pagination,news_public);
-});
+    $(pagination).on('click', 'li a.page', function () {
+        activePage = parseInt($(this).text());
+        getData(serviceUrl, activePage, limit, parent, pagination, news_public);
+    });
 
-$(pagination).on('click','li a.direction',function(){
-    activePage=parseInt(this.id);
-    getData(serviceUrl,activePage,limit,parent,pagination,news_public);
-});
+    $(pagination).on('click', 'li a.direction', function () {
+        activePage = parseInt(this.id);
+        getData(serviceUrl, activePage, limit, parent, pagination, news_public);
+    });
 
 
 

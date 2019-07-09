@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-<title>Market Research Blog and Industry Overview</title>
-<meta name="description" content="Find informational market research blog posts on different industries worldwide.">
-<meta name="keywords" content="market research blog">
-
+@section('title','Market Research Blog and Industry Overview')
+@section('meta_desc', 'Find informational market research blog posts on different industries worldwide.')
+@section('meta_keywords','market research blog')
 
 @include('public.top-search')
 <!-- Inner Page Banner Area End Here --> 

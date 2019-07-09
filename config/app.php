@@ -14,7 +14,7 @@ return [
 
     'name' => 'Laravel',
 
-    'baseURL' => 'https://garnerinsights.com',
+    'baseURL' => 'http://192.168.0.162/GIAWS',
 
     /*
     |--------------------------------------------------------------------------

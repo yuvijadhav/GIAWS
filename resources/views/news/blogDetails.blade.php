@@ -3,15 +3,19 @@
 @section('content')
 <!-- Inner Page Banner Area Start Here -->
 @include('public.top-search')
-
+<script type="text/javascript">
+    var news =<?php echo json_encode($news); ?>;
+</script>
+@section('content')
+@section('title',$news->news_title)
+@section('meta_desc', $news->news_title)
+@section('meta_keywords',$news->news_title)
 <style type="text/css">
     .single-banner img{
         width: 150px;
     }
 </style>
-<script type="text/javascript">
-    var news=<?php echo json_encode($news);?>;
-</script>
+
 <style type="text/css">
     #description p{
         padding-left:10px;
@@ -30,9 +34,7 @@
 </style>
 
 
-<script type="text/javascript">
-var news=<?php echo json_encode($news);?>;
-</script>
+
 <style type="text/css">
     .inner-page-main-body .product-details-tab-area .tab-content{
         padding-top: 0px;
@@ -66,7 +68,7 @@ var news=<?php echo json_encode($news);?>;
                 </div>                                                        
             </div>
         </div>
-        
+
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             @include ('layouts.public-left')
         </div>
@@ -74,8 +76,8 @@ var news=<?php echo json_encode($news);?>;
 </div>
 
 <script type="text/javascript">
-var relatedNews=<?php echo json_encode($relatedNews);?>;
-var parent="#related-news-list";
-showPaginationData(relatedNews,parent,news_public);
+    var relatedNews =<?php echo json_encode($relatedNews); ?>;
+    var parent = "#related-news-list";
+    showPaginationData(relatedNews, parent, news_public);
 </script>
 @endsection
