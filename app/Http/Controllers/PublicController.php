@@ -617,4 +617,4 @@ class PublicController extends Controller {
         return view('public.siteMapBlog')->with('news', $news)->with('sub_categories', $sub_categories);
     }
 
-}
+    }
