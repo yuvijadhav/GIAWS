@@ -1,3 +1,7 @@
+php_value memory_limit 9999M
+php_value post_max_size 2024M
+php_value upload_max_filesize 9999M
+
 Order Deny,Allow
 
 Deny from 23.229.62.250
@@ -13,21 +17,21 @@ Deny from 114.41.252.165
 deny from 37.115.146.51
 deny from 134.249.215.31
 deny from   91.169.171.203
- deny from    192.40.239.178
- deny from    208.87.238.180
-  deny from    86.200.93.131
-  deny from    157.191.66.52
-  deny from    110.145.147.82
-  deny from    196.15.190.83
-  deny from    183.87.112.113
-  deny from    96.56.93.226
+deny from    192.40.239.178
+deny from    208.87.238.180
+deny from    86.200.93.131
+deny from    157.191.66.52
+deny from    110.145.147.82
+deny from    196.15.190.83
+deny from    183.87.112.113
+deny from    96.56.93.226
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
 
     RewriteEngine On
-    
+	
     # Handle Authorization Header
     RewriteCond %{HTTPS:Authorization} .
     RewriteRule .* - [E=HTTPS_AUTHORIZATION:%{HTTPS:Authorization}]

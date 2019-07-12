@@ -45,12 +45,12 @@ trait SendMail{
 				$message->to($this->email, $this->name)->subject
 				("Request Sample: ".$this->report_title);
 
-				$message->from('yuvraj.j@straitsresearch.net',"Garner Insights");
+				$message->from('sales@reportsmonitor.com',"Garner Insights");
 			});
 			Mail::send("mail/adminMail",$data,function($message){
-				$message->to('yuvraj.j@straitsresearch.net',$this->name)->subject("Request Sample: Report Name".$this->report_title);
+				$message->to('sales@reportsmonitor.com',$this->name)->subject("Request Sample: Report Name".$this->report_title);
 				/*$message->to('ketki@jmtit.com',$this->name)->subject("Request Sample: Report Name".$this->report_title);*/
-				$message->from('yuvraj.j@straitsresearch.net',"Garner Insights");
+				$message->from('sales@reportsmonitor.com',"Garner Insights");
 			});
 		}
 		else{
@@ -59,11 +59,11 @@ trait SendMail{
 				$message->to($this->email, $this->name)->subject
 				("Discount Enquiry :".$this->report_title);
 
-				$message->from('yuvraj.j@straitsresearch.net',"Garner Insights");
+				$message->from('sales@reportsmonitor.com',"Garner Insights");
 			});
 			Mail::send("mail/adminMail",$data,function($message){
-				$message->to('yuvraj.j@straitsresearch.net',$this->name)->subject("Discount Enquiry: ".$this->report_title);
-				$message->from('yuvraj.j@straitsresearch.net',"Garner Insights");
+				$message->to('sales@reportsmonitor.com',$this->name)->subject("Discount Enquiry: ".$this->report_title);
+				$message->from('sales@reportsmonitor.com',"Garner Insights");
 			});
 		}
 		
@@ -82,14 +82,14 @@ trait SendMail{
 		Mail::send("mail/enquiryMail",$data,function($message) {
 			$message->to($this->email, $this->name)->subject
 			("Enquiry: ".$this->report);
-			$message->from('yuvraj.j@straitsresearch.net',"Garner Insights");
+			$message->from('sales@reportsmonitor.com',"Garner Insights");
 		});
 		Mail::send("mail/adminEnquiryMail",$data,function($message) {
-			$message->to("yuvraj.j@straitsresearch.net", $this->name)->subject
+			$message->to("sales@reportsmonitor.com", $this->name)->subject
 			("Report Enquiry: ".$this->report);
 			/*$message->to("ketki@jmtit.com", $this->name)->subject
 			("Report Enquiry: ".$this->report);*/
-			$message->from('yuvraj.j@straitsresearch.net',"Garner Insights");
+			$message->from('sales@reportsmonitor.com',"Garner Insights");
 		});
 		
 	}
@@ -107,12 +107,12 @@ trait SendMail{
 		Mail::send("mail/contactMail",$data,function($message) {
 			$message->to($this->email, $this->name)->subject
 			("Contact");
-			$message->from('yuvraj.j@straitsresearch.net',$this->name);
+			$message->from('sales@reportsmonitor.com',$this->name);
 		});
 		Mail::send("mail/adminContactMail",$data,function($message) {
-			$message->to("yuvraj.j@straitsresearch.net", $this->name)->subject
+			$message->to("sales@reportsmonitor.com", $this->name)->subject
 			("Contact Enquiry Garner Insights");
-			$message->from('yuvraj.j@straitsresearch.net',$this->name);
+			$message->from('sales@reportsmonitor.com',$this->name);
 		});
 		
 	}
@@ -129,14 +129,14 @@ trait SendMail{
 		Mail::send("mail/quoteMail",$data,function($message) {
 			$message->to($this->email, $this->name)->subject
 			("quote");
-			$message->from('yuvraj.j@straitsresearch.net',$this->name);
+			$message->from('sales@reportsmonitor.com',$this->name);
 		});
 		Mail::send("mail/adminQuoteMail",$data,function($message) {
-			$message->to("yuvraj.j@straitsresearch.net", $this->name)->subject
+			$message->to("sales@reportsmonitor.com", $this->name)->subject
 			("Contact Enquiry");
 			/*$message->to("ketki@jmtit.com", $this->name)->subject
 			("Quote Enquiry");*/
-			$message->from('yuvraj.j@straitsresearch.net',$this->name);
+			$message->from('sales@reportsmonitor.com',$this->name);
 		});
 		
 	}
@@ -166,17 +166,17 @@ trait SendMail{
 		if(!$this->source!="payapl"){
 
 			Mail::send("mail/adminPaymentMail",$data,function($message){
-				$message->to('yuvraj.j@straitsresearch.net',$this->first_name)->subject("Paypal form submit by user: Report Name ".$this->report_title);
+				$message->to('sales@reportsmonitor.com',$this->first_name)->subject("Paypal form submit by user: Report Name ".$this->report_title);
 				/*$message->to('ketki@jmtit.com',$this->first_name)->subject("Paypal form submit by user: Report Name ".$this->report_title);*/
-				$message->from('yuvraj.j@straitsresearch.net',"Garner Insights");
+				$message->from('sales@reportsmonitor.com',"Garner Insights");
 			});
 		}
 		else{
 			
 			Mail::send("mail/adminPaymentMail",$data,function($message){
-				$message->to('yuvraj.j@straitsresearch.net',$this->first_name)->subject("Wire transfer form submitted by user: ".$this->report_title);
+				$message->to('sales@reportsmonitor.com',$this->first_name)->subject("Wire transfer form submitted by user: ".$this->report_title);
 				/*$message->to('ketki@jmtit.com',$this->first_name)->subject("Wire transfer from submitted by user: ".$this->report_title);*/
-				$message->from('yuvraj.j@straitsresearch.net',"Garner Insights");
+				$message->from('sales@reportsmonitor.com',"Garner Insights");
 			});
 		}
 		

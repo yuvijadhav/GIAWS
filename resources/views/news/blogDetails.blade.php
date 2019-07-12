@@ -47,7 +47,7 @@ var news=<?php echo json_encode($news);?>;
                     <input type="hidden" value="{{$news->news_id}}">
                     <div class="container-fluid" style="padding: 0px;">
                         <div class="col-md-3">
-                            <img src="storage/app/{{$news->news_image}}" style="width: 180px;">
+                            <img src="/storage/app/{{$news->news_image}}" style="width: 180px;">
                         </div>
                         <div class="col-md-9">
                             <h2 class="title-inner-default">{{$news->news_title}}</h2>

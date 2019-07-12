@@ -200,78 +200,85 @@ class ReportController extends Controller {
                 $report_title = $row->title;
                 $exist = FrontReport::where('report_title', $report_title)->where('publisher_id', $row->publisher_id)->first();
 //                dd(substr($this->cleanNonAsciiCharactersInString($row->long_description), 0, 250));
-                if ($exist == "") {
-                    $published_dates = explode(" ", $row->published_date);
-                    $published_date = $published_dates[0];
-                    $report = new FrontReport();
+                if ($exist == null) {
+                    if ($report_title != "") {
+                        $published_dates = explode(" ", $row->published_date);
+                        $published_date = $published_dates[0];
+                        $report = new FrontReport();
 
-                    $url = str_replace(" ", "-", $row->title);
+                        $url = str_replace(" ", "-", $row->title);
 
-                    $url = preg_replace('#\s+#', '', trim($url));
-                    $url = str_replace("(", "", $url);
-                    $url = str_replace(")", "", $url);
-                    $url = str_replace("$", "", $url);
-                    $url = str_replace("&", "", $url);
-                    $url = str_replace("!", "", $url);
-                    $url = str_replace("@", "", $url);
-                    $url = str_replace("#", "", $url);
-                    $url = str_replace("%", "", $url);
-                    $url = str_replace("^", "", $url);
-                    $url = str_replace("*", "", $url);
-                    $url = str_replace(":", "", $url);
-                    $url = str_replace('"', "", $url);
-                    $url = str_replace("?", "", $url);
-                    $url = str_replace(">", "", $url);
-                    $url = str_replace("<", "", $url);
-                    $url = str_replace(",", "", $url);
-                    $url = str_replace(".", "", $url);
-                    $url = str_replace("/", "", $url);
-                    $url = str_replace("[", "", $url);
-                    $url = str_replace("]", "", $url);
-                    $url = str_replace("|", "", $url);
-                    $url = str_replace("}", "", $url);
-                    $url = str_replace("{", "", $url);
-                    $report->url = $url;
-                    if ($row->is_active == 1) {
-                        $report->status = 1;
-                    } else {
-                        $report->status = 0;
-                    }
-                    $report->report_title = $row->title;
-                    $report->sub_category_id = $row->category_id;
-                    $report->publisher_id = $row->publisher_id;
-                    $report->region_id = $row->region_id;
-                    $report->report_date = $row->published_date;
-                    $report->short_description = substr($this->cleanNonAsciiCharactersInString($row->long_description), 0, 250);
-//                    $report->short_description = "";
-                    $report->save();
-                    if ($report->report_id) {
-//                            $i++;
-                        $this->reportsdetailsuploads($report->report_id, $row);
-//                            flash('Report has been added successfully', 'success')->important();
-                    }
-                } else {
-                    $report_id = $exist->report_id;
-                    if ($report_id) {
-                        $report = FrontReport::find($report_id);
+                        $url = preg_replace('#\s+#', '', trim($url));
+                        $url = str_replace("(", "", $url);
+                        $url = str_replace(")", "", $url);
+                        $url = str_replace("$", "", $url);
+                        $url = str_replace("&", "", $url);
+                        $url = str_replace("!", "", $url);
+                        $url = str_replace("@", "", $url);
+                        $url = str_replace("#", "", $url);
+                        $url = str_replace("%", "", $url);
+                        $url = str_replace("^", "", $url);
+                        $url = str_replace("*", "", $url);
+                        $url = str_replace(":", "", $url);
+                        $url = str_replace('"', "", $url);
+                        $url = str_replace("?", "", $url);
+                        $url = str_replace(">", "", $url);
+                        $url = str_replace("<", "", $url);
+                        $url = str_replace(",", "", $url);
+                        $url = str_replace(".", "", $url);
+                        $url = str_replace("/", "", $url);
+                        $url = str_replace("[", "", $url);
+                        $url = str_replace("]", "", $url);
+                        $url = str_replace("|", "", $url);
+                        $url = str_replace("}", "", $url);
+                        $url = str_replace("{", "", $url);
+                        $report->url = $url;
+                        if ($row->is_active == 1) {
+                            $report->status = 1;
+                        } else {
+                            $report->status = 0;
+                        }
+                        $report->report_title = $row->title;
+                        if ($row->category_id != "") {
+                            $report->sub_category_id = $row->category_id;
+                        } else {
+                            $report->sub_category_id = "15";
+                        }
+                        $report->publisher_id = $row->publisher_id;
+                        $report->region_id = $row->region_id;
                         $report->report_date = $row->published_date;
-                        $report->short_description = substr($row->long_description, 0, 250);
+                        $report->short_description = substr($this->cleanNonAsciiCharactersInString($row->long_description), 0, 250);
+//                    $report->short_description = "";
                         $report->save();
+                        if ($report->report_id) {
+//                            $i++;
+                            $this->reportsdetailsuploads($report->report_id, $row);
+//                            flash('Report has been added successfully', 'success')->important();
+                        }
+                    } else {
+                        return;
+                        $report_id = $exist->report_id;
+                        if ($report_id) {
+                            $report = FrontReport::find($report_id);
+                            $report->report_date = $row->published_date;
+                            $report->short_description = substr($row->long_description, 0, 250);
+                            $report->save();
 
-                        $reportDetails = FrontReportdetail::where("report_id", $report_id)->first();
-                        $reportDetails->long_content = $row->content;
-                        $reportDetails->long_description = $row->long_description;
-                        $reportDetails->report_pages = $row->number_of_pages;
-                        $reportDetails->table_figures = $row->table_figures;
-                        $reportDetails->single_price = $row->single_user_price;
-                        $reportDetails->corporate_price = $row->multi_user_price;
-                        $reportDetails->enterprise_price = $row->enterprise_user_price;
-                        $reportDetails->meta_title = $row->meta_title;
-                        $reportDetails->meta_keywords = $row->meta_keywords;
-                        $reportDetails->meta_description = $row->meta_description;
-                        $reportDetails->save();
+                            $reportDetails = FrontReportdetail::where("report_id", $report_id)->first();
+                            $reportDetails->long_content = $row->content;
+                            $reportDetails->long_description = $row->long_description;
+                            $reportDetails->report_pages = $row->number_of_pages;
+                            $reportDetails->table_figures = $row->table_figures;
+                            $reportDetails->single_price = $row->single_user_price;
+                            $reportDetails->corporate_price = $row->multi_user_price;
+                            $reportDetails->enterprise_price = $row->enterprise_user_price;
+                            $reportDetails->meta_title = $row->meta_title;
+                            $reportDetails->meta_keywords = $row->meta_keywords;
+                            $reportDetails->meta_description = $row->meta_description;
+                            $reportDetails->save();
+                        }
+                        flash($report_title, "danger");
                     }
-                    flash($report_title, "danger");
                 }
             }
         });
@@ -448,9 +455,11 @@ class ReportController extends Controller {
     }
 
     public function getThankyou(Request $request) {
-//        $report = Report::with('subCategory')->orderBy('created_at', 'desc')->take(10)->get();
-        $report = FrontReport::where('status', 1)->with("subCategory")->orderBy('created_at', 'desc')->take(10)->get();
-//        dd($report);
+//        dd($request);
+//        $sub_categories = SubCategory::all();
+//          dd($sub_categories);
+//        $report = Report::with('subCategory')->orderBy('created_at', 'desc')->take(1)->get();
+        $report = array();
         return view('public.thankYou')->with('report', $report);
     }
 

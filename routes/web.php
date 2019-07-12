@@ -44,6 +44,12 @@ Route::post('/contact', 'PublicController@postContact');
 Route::post('quote', 'PublicController@postQuote');
 Route::get('/about-us', 'PublicController@getabout');
 Route::get('/faq', 'PublicController@getFaq');
+//Route::get('thank-you', function () {
+//    return 'Hello World';
+//});
+Route::get('clearseesion', 'PublicController@clearSession');
+//Route::get('thank-you', 'PublicController@getThankyou');
+Route::get('thank-you', 'ReportController@getThankyou');
 Route::get('/terms-and-condition', 'PublicController@getTermsAndCondition');
 Route::get('/return-policy', 'PublicController@getReturnPolicy');
 Route::get('/privacy-policy', 'PublicController@getPrivacyPolicy');
@@ -101,7 +107,7 @@ Route::get('sitemap_blogs1', 'PublicController@siteMapBlog');
 
 Auth::routes();
 Route::group(['middleware' => ['web']], function() {
-
+//    Route::get('thank-you', 'ReportController@getThankyou');
     //Sub Category used as category
     Route::get('addCategory', ['middleware' => 'auth', 'uses' => 'SubCategoryController@getAddSubCategory']);
     Route::post('addCategory', ['middleware' => 'auth', 'uses' => 'SubCategoryController@postAddSubCategoty']);
@@ -169,6 +175,5 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('editRegion', ['middleware' => 'auth', 'uses' => 'RegionController@postEditRegion']);
     Route::get('deleteRegion', ['middleware' => 'auth', 'uses' => 'RegionController@getDeleteRegion']);
 });
-Route::get('thank-you', 'ReportController@getThankyou');
 Route::get('/{url}', 'PublicController@getReportDetails');
 

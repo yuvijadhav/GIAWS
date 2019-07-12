@@ -270,10 +270,8 @@ class PublicController extends Controller {
         $enquiry_description = $post['category_description'];
 
         $object = array('name' => $post['enquiry_name'], 'email' => $post['enquiry_email'], 'mobile' => $post['enquiry_phone'], 'designation' => $post['enquiry_title'], 'enquiry_company' => $post['enquiry_company'], 'country' => $post['enquiry_country'], 'description' => $enquiry_description, 'report_pages' => $post['report_pages'], 'report_title' => $post['report_id'], 'source' => $enquiry_source, 'ip' => $ip, 'url' => $url);
-
         $res = file_get_contents('https://www.iplocate.io/api/lookup/' . $object['ip']);
         $res = json_decode($res);
-
         $Array['name'] = $object['name'];
         $Array['mail'] = $object['email'];
         $Array['job_title'] = $object['designation'];
@@ -291,7 +289,6 @@ class PublicController extends Controller {
         $url = "reportsmonitors.com/addLead";
         $postData = $Array;
 
-
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -303,21 +300,18 @@ class PublicController extends Controller {
 
         curl_close($ch);
 
-        $url = "http://159.89.149.111/addLead";
-        $postData = $Array;
-
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_POST, count($postData));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
-
-        $output = curl_exec($ch);
-
-        curl_close($ch);
-
+//        $url = "http://159.89.149.111/addLead";
+//        $postData = $Array;
+////        dd($postData);
+//        $ch = curl_init();
+//        curl_setopt($ch, CURLOPT_URL, $url);
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+//        curl_setopt($ch, CURLOPT_HEADER, false);
+//        curl_setopt($ch, CURLOPT_POST, count($postData));
+//        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+//
+//        $output = curl_exec($ch);
+//        curl_close($ch);
         $this->sendHtmlMail($object);
         //flash('Enqury sent successfully','success')->important();
         return redirect('thank-you');
@@ -438,35 +432,36 @@ class PublicController extends Controller {
 //        dd($url);
         $sub_categories = SubCategory::all();
         if ($url != "null") {
-            DB::disconnect();
-            $reportURLdata = DB::table('reportsurl')->where('url', $url)->first();
-//            dd($reportURLdata);
-            if (($reportURLdata) != NULL) {
-                $report_id = $reportURLdata->report_id;
-                $report = Report::where('status', 1)->where("report_id", $report_id)->with("publisher")->with("subCategory")->with("region")->first();
+
+//            $reportURLdata = DB::table('reportsurl')->where('url', $url)->first();
+//            if (($reportURLdata) != NULL) {
+//                $report_id = $reportURLdata->report_id;
+//                $report = Report::where('status', 1)->where("report_id", $report_id)->with("publisher")->with("subCategory")->with("region")->first();
 //                $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-                $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-                return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
+//                return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
+//            } else {
+            $report = array();
+//            $reportURLdata = DB::table('report')->where("url", trim($url))->first();
+//            dd($reportURLdata);
+            $report = FrontReport::where('status', 1)->where("url", trim($url))->with("publisher")->with("subCategory")->with("region")->with("reportdetails")->first();
+//            dd($report);
+            if (($report) != NULL) {
+//                $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
+                $relatedReports = FrontReport::where('status', 1)->where("sub_category_id", $report->sub_category_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
+                return view('report.reportDetailsData')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
             } else {
-                $report = FrontReport::where('status', 1)->where("url", $url)->with("publisher")->with("subCategory")->with("region")->with("reportdetails")->first();
+
+                $report = Report::where('status', 1)->where("url", $url)->with("publisher")->with("subCategory")->with("region")->first();
                 if (($report) != NULL) {
-//                    dd($report->sub_category_id);
+                    $relatedReports = FrontReport::where('status', 1)->where("sub_category_id", $report->sub_category_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
 //                    $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-                    $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-//                    $relatedReports = array();
-                    return view('report.reportDetailsData')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
+                    return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
                 } else {
-                    $report = Report::where('status', 1)->where("url", $url)->with("publisher")->with("subCategory")->with("region")->first();
-                    if (($report) != NULL) {
-//                        $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->where("report_id", "!=", $report->report_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-                        $relatedReports = Report::where('status', 1)->where("sub_category_id", $report->sub_category_id)->with("publisher")->with("subCategory")->orderBy('report_id', 'desc')->take(2)->get();
-                        return view('report.reportDetails')->with('report', $report)->with('relatedReports', $relatedReports)->with('sub_categories', $sub_categories);
-                    } else {
-                        return redirect('reports');
-                    }
+                    return redirect('reports');
                 }
-                $reportdetails = FrontReportdetail::where('status', 1)->where("url", $report->sub_category_id)->with("publisher")->with("subCategory")->with("region")->first();
             }
+//                $reportdetails = FrontReportdetail::where('status', 1)->where("url", $report->sub_category_id)->with("publisher")->with("subCategory")->with("region")->first();
+//            }
         } else {
             return redirect('reports');
         }
@@ -595,4 +590,28 @@ class PublicController extends Controller {
         return view('public.siteMapBlog')->with('news', $news)->with('sub_categories', $sub_categories);
     }
 
+    public function getThankyou(Request $request) {
+//        dd($request);
+        $sub_categories = SubCategory::all();
+//          dd($sub_categories);
+//        $report = Report::with('subCategory')->orderBy('created_at', 'desc')->take(1)->get();
+        $report = array();
+        return view('public.thankYou')->with('report', $report);
     }
+
+    public function clearSession() {
+//        $result = mysql_query("SHOW FULL PROCESSLIST");
+        $results = DB::select("select * from information_schema.processlist where user='gimzfdgcdbyb' and DB='gimzfdgcdbyb';");
+        if ($results) {
+            foreach ($results as $row) {
+                $process_id = $row->ID;
+                if ($row->TIME > 10) {
+                    $sql = "KILL $process_id";
+                    DB::statement($sql);
+//                    echo $sql;
+                }
+            }
+        }
+    }
+
+}
