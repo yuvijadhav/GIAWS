@@ -188,10 +188,12 @@ class ReportController extends Controller {
     }
 
     public function postUploadFile(Request $request) {
-        $this->validate($request, ["upload_file" => 'required|mimes:xls']);
+//        $this->validate($request, ["upload_file" => 'required|mimes:xlsx']);
         $file = Input::file('upload_file');
+//        dd($file);
         Excel::load($file, function($reader) {
             $sheet = $reader->all();
+            dd($sheet);
 
             // foreach ($sheets as $sheet) {
 //            $sheet=$sheets[0];

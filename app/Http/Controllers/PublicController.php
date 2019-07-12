@@ -373,7 +373,14 @@ class PublicController extends Controller {
         $sub_categories = SubCategory::all();
 
         if ($url != "null") {
-
+            try {
+                DB::connection()->reconnect();
+//                dd(__LINE__);
+//                return true;
+            } catch (Exception $ex) {
+//                dd(__LINE__);
+//                return false;
+            }
             $reportURLdata = DB::table('reportsurl')->where('url', $url)->first();
             if (($reportURLdata) != NULL) {
                 $report_id = $reportURLdata->report_id;
@@ -399,7 +406,14 @@ class PublicController extends Controller {
     public function getReportDetailsOld28062019($url) {
         $sub_categories = SubCategory::all();
         if ($url != "null") {
-
+            try {
+                DB::connection()->reconnect();
+//                dd(__LINE__);
+//                return true;
+            } catch (Exception $ex) {
+//                dd(__LINE__);
+//                return false;
+            }
             $reportURLdata = DB::table('reportsurl')->where('url', $url)->first();
             if (($reportURLdata) != NULL) {
                 $report_id = $reportURLdata->report_id;
